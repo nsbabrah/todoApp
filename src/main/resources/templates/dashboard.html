@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<link th:href="@{/css/button.css}" href="/css/button.css"  rel="stylesheet" type="text/css"  />
+<link th:href="@{/bootstrap-4.0.0/dist/css/bootstrap.min.css}" href="/bootstrap-4.0.0/dist/css/bootstrap.min.css"  rel="stylesheet" type="text/css"  />
+<script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap-4.0.0/dist/js/bootstrap.min.js}"></script>
+
+    <title>Twiix Notes</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <script>
+    $(document).ready(function(){
+        $("#addfolder").click(function(){
+            $('.alert').show()
+        }) 
+    });
+    </script>
+</head>
+<body>
+<header style="color:white;background-color: black; height:80px">
+    Twiix Notes
+  </header>
+  
+   
+  <button class="button button-royal button-circle button-giant"  data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-plus"></i>+</button>
+ 
+  <h1>Notes</h1>
+      <div th:if="${Notes}">
+       <h1 th:each="note : ${Notes}" th:inline="text">[[${note.content}]]!</h1>
+    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Folder</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+<form class="addfolder" method="post" action="/CreateNotes" th:object="${content}" th:action="@{/CreateNotes}" >
+      <div class="modal-body">
+   <div class="form-group">
+    <label for="exampleInputEmail1">Create Notes</label>
+    <input type="name"  name="content" th:field="*{content}" class="form-control" id="Foldername" aria-describedby="" placeholder="Enter folder name"></input>
+ 
+</div>
+
+      <div class="alert alert-success alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> This alert box could indicate a successful or positive action.
+  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" value="Submit" id="addfolder" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+      </form>
+    </div>
+  </div	>
+</div>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Form</h1>
+    <form action="#" th:action="@{/CreateNotes}" th:object="${content}" method="post">
+     	 <input type="text" th:field="*{title}" /></input> 
+        <input type="text" th:field="*{content}" /></input> 
+       
+     	 <input type="name"  name="content" th:field="*{title}" class="form-control" id="Foldername" aria-describedby="" placeholder="Enter folder name"></input>   
+     	
+        <input type="name"  name="content" th:field="*{data}" class="form-control" id="Foldername" aria-describedby="" placeholder="Enter folder name"></input>   
+     	
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html> -->

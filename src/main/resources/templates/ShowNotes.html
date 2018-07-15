@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Notes</title>
+    <link th:href="@{/css/button.css}" href="/css/button.css"  rel="stylesheet" type="text/css"  />
+<link th:href="@{/bootstrap-4.0.0/dist/css/bootstrap.min.css}" href="/bootstrap-4.0.0/dist/css/bootstrap.min.css"  rel="stylesheet" type="text/css"  />
+<script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap-4.0.0/dist/js/bootstrap.min.js}"></script>
+<style>
+.right-side-button{
+  float:right;
+}.navbar-header{
+  width:100%;
+}
+.content{
+ background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
+ width: 100%;
+ height: 100%;
+ font: normal 14px verdana;
+ line-height: 25px;
+ padding: 2px 10px;
+ border: solid 1px #ddd;
+ background-size:100%;
+}
+.modal-body  {
+    word-break:break-all
+}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation" style="color:white;background-color: blue; height:80px">
+  <div class="navbar-header">
+   
+      <tr th:each = "Notes: ${Notes}">
+       
+        <h4 class="modal-title"> <td th:text="${Notes.title}"></td><br></br></h4>  </tr>
+    <div class="pull-right">
+          </div>
+  <a type="button" class="btn second-button btn-default navbar-btn right-side-button" th:href="@{'/Edit/' + ${note.id}}" th:each="note : ${Notes}" th:inline="text">Edit
+     </a> 
+  <a type="button" class="btn second-button btn-default navbar-btn right-side-button" th:href="@{'/delet/' + ${note.id}}" th:each="note : ${Notes}" th:inline="text">Delete
+     </a> 
+  </div>
+  
+</nav>
+
+<!-- <header style="color:white;background-color: blue; height:80px">
+    Twiix Notes
+  <button type="button" class="btn btn-default" aria-label="Left Align">
+  <span class="glyphicon glyphicon-pencil">Edit</span>
+</button>
+ <button type="button" class="btn btn-default" aria-label="Left Align">
+  <span class="glyphicon glyphicon-align-left" aria-hidden="true"> Delete</span>
+</button>
+  </header> -->
+  <div class="card">
+  <div class="card-block">
+  <!-- <tr th:each = "Notes: ${Notes}">
+   Title <td th:text="${Notes.title}"></td><br></br>
+  
+   </tr> -->
+     </div>
+</div>
+   <!-- Modal -->
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+      
+      <!--  <tr th:each = "Notes: ${Notes}">
+       
+        <h4 class="modal-title"> <td th:text="${Notes.title}"></td><br></br></h4>  </tr> -->
+     </div>
+     <tr th:each = "Notes: ${Notes}">
+       
+      <div class="modal-body content">
+        <p > <td th:text="${Notes.content}"></td></p>
+        
+      </div>
+       </tr>
+        
+      <div class="modal-footer">
+     
+      </div>
+    </div>
+
+
+
+ <!--  <tr th:each = "Notes: ${Notes}">
+        Title <td th:text="${Notes.title}"></td><br></br>
+        <td th:text="${Notes.content}"></td>
+    </tr>
+  -->
+</body>
+</html>

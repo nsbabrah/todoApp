@@ -1,0 +1,21 @@
+
+          
+          <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta description="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" th:href="@{/app.css}"/>
+
+    <title>Notes List</title>
+  </head>
+  <body>
+    <h1>Notes</h1>
+      <div th:if="${Notes}">
+       <h1 th:each="note : ${Notes}" th:inline="text">[[${note.title}]]!</h1>
+    </div>
+  </body>
+</html>
+
+
